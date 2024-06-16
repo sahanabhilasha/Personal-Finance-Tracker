@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Finance Tracker</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1, h2 {
+            color: #343a40;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .list-group-item.income {
+            border-left: 5px solid #28a745;
+        }
+        .list-group-item.expense {
+            border-left: 5px solid #dc3545;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .card-body {
+            text-align: center;
+        }
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        #transactionList {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        #categoryChart {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Personal Finance Tracker</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <form id="transactionForm">
+                    <div class="form-group">
+                        <label for="amount">Amount</label>
+                        <input type="number" id="amount" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" id="description" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Type</label>
+                        <select id="type" class="form-control" required>
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Transaction</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Summary</h4>
+                        <p>Total Income: <span id="totalIncome" class="income">$0.00</span></p>
+                        <p>Total Expenses: <span id="totalExpenses" class="expense">$0.00</span></p>
+                        <p>Balance: <span id="balance">$0.00</span></p>
+                        <button class="btn btn-secondary" id="printButton">Print Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <h2>Transactions</h2>
+        <ul id="transactionList" class="list-group mb-3">
+            <!-- Transactions will be displayed here -->
+        </ul>
+        <canvas id="categoryChart" width="400" height="200"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="finance.js"></script>
+</body>
+</html>
